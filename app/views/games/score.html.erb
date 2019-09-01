@@ -1,0 +1,19 @@
+<h1>Result</h1>
+<%check = 0 %>
+<% @word.split("") do |letter|
+  if @array_letters.include? letter%>
+    <%next%>
+  <%else%>
+    <p><%= "Sorry but #{@word} cant be built out of #{@array_letters}"%></p>
+    <% check = 5 %>
+  <%end%>
+<%end%>
+<% if check == 0 %>
+  <%if @found %>
+    <p><%= "Congratulations! #{@word} is a valid English word"%></p>
+  <%else %>
+    <p><%="Sorry but #{@word} does not seem to be a valid English word.."%></p>
+  <%end%>
+<%end%>
+
+<%= link_to "Play again", "/new" %>
